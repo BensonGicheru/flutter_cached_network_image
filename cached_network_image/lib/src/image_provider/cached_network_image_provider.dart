@@ -74,7 +74,7 @@ class CachedNetworkImageProvider
     DecoderBufferCallback decode,
   ) {
     final chunkEvents = StreamController<ImageChunkEvent>();
-    return MultiFrameImageStreamCompleter(
+    return MultiImageStreamCompleter(
       codec: _loadBufferAsync(key, chunkEvents, decode),
       chunkEvents: chunkEvents.stream,
       scale: key.scale,
@@ -116,7 +116,7 @@ class CachedNetworkImageProvider
       ImageDecoderCallback decode,
   ) {
     final chunkEvents = StreamController<ImageChunkEvent>();
-    return MultiFrameImageStreamCompleter(
+    return MultiImageStreamCompleter(
       codec: _loadImageAsync(key, chunkEvents, decode),
       chunkEvents: chunkEvents.stream,
       scale: key.scale,
