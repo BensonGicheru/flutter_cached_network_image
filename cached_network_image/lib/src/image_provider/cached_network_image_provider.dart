@@ -111,7 +111,7 @@ class CachedNetworkImageProvider
 
   @override
   ImageStreamCompleter loadBuffer(
-      CachedNetworkImageProvider key, ImageDecoderCallback decode) {
+      CachedNetworkImageProvider key, DecoderBufferCallback decode) {
     final chunkEvents = StreamController<ImageChunkEvent>();
     return MultiFrameImageStreamCompleter(
       codec: _loadBufferAsync(key, chunkEvents, decode).first,
@@ -130,7 +130,7 @@ class CachedNetworkImageProvider
   Stream<ui.Codec> _loadBufferAsync(
     CachedNetworkImageProvider key,
     StreamController<ImageChunkEvent> chunkEvents,
-    ImageDecoderCallback decode,
+    DecoderBufferCallback decode,
   ) {
     assert(key == this);
     return ImageLoader().loadBufferAsync(
